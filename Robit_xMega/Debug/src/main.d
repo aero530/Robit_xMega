@@ -69,7 +69,8 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/common/services/usb/udc/udi.h \
  ../src/ASF/common/services/usb/udc/udc.h \
  ../src/ASF/common/services/usb/udc/udd.h ../src/pwm16.h ../src/asf.h \
- ../src/RF24.h ../src/RF24_config.h ../src/nRF24L01.h
+ ../src/RF24.h ../src/RF24_config.h ../src/nRF24L01.h ../src/motor.h \
+ ../src/motor_config.h
 
 ../src/asf.h:
 
@@ -236,3 +237,7 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1056\avr8-g
 ../src/RF24_config.h:
 
 ../src/nRF24L01.h:
+
+../src/motor.h:
+
+../src/motor_config.h:

@@ -36,8 +36,8 @@
 #include "RF24_config.h"
 #include "nRF24L01.h"
 
-//#include "motor.h"
-//#include "motor_config.h"
+#include "motor.h"
+#include "motor_config.h"
 
 //-----------------------------------------------------------------------------
 // USB
@@ -86,10 +86,10 @@ uint16_t joystick[6];  // 6 element array holding Joystick readings
 
 //-----------------------------------------------------------------------------
 
-//#define		MOTOR_COUNT			4		/**< Number of motors attached */
+#define		MOTOR_COUNT			4		/**< Number of motors attached */
 
-//MOTOR_OBJECT_t	motors[MOTOR_COUNT];
-//SERVO_OBJECT_t	servos[SERVO_COUNT];
+MOTOR_OBJECT_t	motors[MOTOR_COUNT];
+SERVO_OBJECT_t	servos[SERVO_COUNT];
 
 //-----------------------------------------------------------------------------
 
@@ -118,7 +118,7 @@ int main (void) {
 		
 	// -------------------------------------------------------------------
 	// Motors
-	/*
+	
 	motor_init(&motors[0], PWM_TCF0, PWM_CH_A, 4000, GPIO_F0, GPIO_A0);
 	motor_init(&motors[1], PWM_TCF0, PWM_CH_B, 4000, GPIO_F1, GPIO_A1);
 	motor_init(&motors[2], PWM_TCF0, PWM_CH_C, 4000, GPIO_F2, GPIO_A2);
@@ -137,7 +137,7 @@ int main (void) {
 	servo_init(&servos[3], PWM_TCD0, PWM_CH_D, 50, GPIO_D3);
 
 	// Steppers
-
+/*
 gpio_set_pin_high(STEPPER_0_DIR);
 gpio_set_pin_high(STEPPER_0_EN);
 gpio_set_pin_high(STEPPER_0_RST);
@@ -152,8 +152,8 @@ gpio_set_pin_high(STEPPER_0_SLP);
 gpio_set_pin_low(STEPPER_0_MS1);
 gpio_set_pin_low(STEPPER_0_MS2);
 gpio_set_pin_low(STEPPER_0_MS3);
-
 */
+
 	// -------------------------------------------------------------------
 	
 	// -------------------------------------------------------------------
@@ -180,8 +180,8 @@ gpio_set_pin_low(STEPPER_0_MS3);
 			gpio_toggle_pin(LED_D5);
 			
 			// Fetch the data payload
-			rf24_read( joystick, 12 ); //ech should figure this out better
-
+			rf24_read( joystick, 12 ); //the size is the number of BYTES (uint8_t) regardless of the size of values in the buffer
+/*
 			udi_cdc_puts("Rjoy ");
 			print_value(joystick[0]);
 			udi_cdc_puts(" ");
@@ -211,16 +211,17 @@ gpio_set_pin_low(STEPPER_0_MS3);
 			udi_cdc_puts(" ");
 			print_value(joystick[5]>>4 & 0b00000001);
 			udi_cdc_puts("\r\n");
+			*/
 		}
 		
-	/*
+	
 		for (uint16_t angle_loop = 0; angle_loop < 18000; angle_loop=angle_loop + 500) {
 			servo_set(&servos[0], angle_loop);
 			servo_set(&servos[1], angle_loop);
 			servo_set(&servos[2], angle_loop);
 			servo_set(&servos[3], angle_loop);
 		}
-	*/	
+	
 	
 	}
 	
